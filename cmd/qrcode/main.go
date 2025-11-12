@@ -48,9 +48,7 @@ Usage:
 
 	content := strings.Join(flag.Args(), " ")
 
-	var err error
-	var q *qrcode.QRCode
-	q, err = qrcode.New(content, qrcode.Highest)
+	q, err := qrcode.New(content, qrcode.Highest)
 	checkError(err)
 
 	if *disableBorder {
@@ -67,18 +65,18 @@ Usage:
 		q.ForegroundColor, q.BackgroundColor = q.BackgroundColor, q.ForegroundColor
 	}
 
-	var png []byte
-	png, err = q.PNG(*size)
+	png, err := q.PNG(*size)
 	checkError(err)
 
 	if *outFile == "" {
-		os.Stdout.Write(png)
+		_, err = os.Stdout.Write(png)
+		checkError(err)
 	} else {
-		var fh *os.File
-		fh, err = os.Create(*outFile + ".png")
+		fh, err := os.Create(*outFile + ".png")
 		checkError(err)
 		defer fh.Close()
-		fh.Write(png)
+		_, err = fh.Write(png)
+		checkError(err)
 	}
 }
 

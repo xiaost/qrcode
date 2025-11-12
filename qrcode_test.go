@@ -105,22 +105,17 @@ func TestQRCodeVersionCapacity(t *testing.T) {
 		alphanumericData := strings.Repeat("A", test.maxAlphanumeric)
 		byteData := strings.Repeat("#", test.maxByte)
 
-		var n *QRCode
-		var a *QRCode
-		var b *QRCode
-		var err error
-
-		n, err = New(numericData, test.level)
+		n, err := New(numericData, test.level)
 		if err != nil {
 			t.Fatal(err.Error())
 		}
 
-		a, err = New(alphanumericData, test.level)
+		a, err := New(alphanumericData, test.level)
 		if err != nil {
 			t.Fatal(err.Error())
 		}
 
-		b, err = New(byteData, test.level)
+		b, err := New(byteData, test.level)
 		if err != nil {
 			t.Fatal(err.Error())
 		}
@@ -143,7 +138,6 @@ func TestQRCodeVersionCapacity(t *testing.T) {
 }
 
 func TestQRCodeISOAnnexIExample(t *testing.T) {
-	var q *QRCode
 	q, err := New("01234567", Medium)
 
 	if err != nil {

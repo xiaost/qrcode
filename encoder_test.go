@@ -71,7 +71,6 @@ func TestByteModeLengthCalculations(t *testing.T) {
 
 	for i, test := range tests {
 		encoder := newDataEncoder(test.dataEncoderType)
-		var resultLength int
 
 		resultLength, err := encoder.encodedLength(test.dataMode, test.numSymbols)
 

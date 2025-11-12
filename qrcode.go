@@ -56,7 +56,6 @@ import (
 	"image/color"
 	"image/png"
 	"io"
-	"io/ioutil"
 	"log"
 	"os"
 
@@ -72,8 +71,6 @@ import (
 //
 // To serve over HTTP, remember to send a Content-Type: image/png header.
 func Encode(content string, level RecoveryLevel, size int) ([]byte, error) {
-	var q *QRCode
-
 	q, err := New(content, level)
 
 	if err != nil {
@@ -89,8 +86,6 @@ func Encode(content string, level RecoveryLevel, size int) ([]byte, error) {
 // a larger image is silently written. Negative values for size cause a variable
 // sized image to be written: See the documentation for Image().
 func WriteFile(content string, level RecoveryLevel, size int, filename string) error {
-	var q *QRCode
-
 	q, err := New(content, level)
 
 	if err != nil {
@@ -109,16 +104,14 @@ func WriteFile(content string, level RecoveryLevel, size int, filename string) e
 func WriteColorFile(content string, level RecoveryLevel, size int, background,
 	foreground color.Color, filename string) error {
 
-	var q *QRCode
-
 	q, err := New(content, level)
-
-	q.BackgroundColor = background
-	q.ForegroundColor = foreground
 
 	if err != nil {
 		return err
 	}
+
+	q.BackgroundColor = background
+	q.ForegroundColor = foreground
 
 	return q.WriteFile(size, filename)
 }
@@ -382,7 +375,7 @@ func (q *QRCode) WriteFile(size int, filename string) error {
 		return err
 	}
 
-	return ioutil.WriteFile(filename, png, os.FileMode(0644))
+	return os.WriteFile(filename, png, os.FileMode(0644))
 }
 
 // encode completes the steps required to encode the QR Code. These include
