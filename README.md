@@ -1,4 +1,6 @@
-# go-qrcode #
+# qrcode #
+
+> **Note:** This is a fork of [https://github.com/skip2/go-qrcode](https://github.com/skip2/go-qrcode)
 
 Package qrcode implements a QR Code encoder.
 
