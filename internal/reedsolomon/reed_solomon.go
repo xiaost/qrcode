@@ -1,5 +1,6 @@
 // go-qrcode
 // Copyright 2014 Tom Harwood
+// Copyright 2025 Kyle Xiao (xiaost7@gmail.com)
 
 // Package reedsolomon provides error correction encoding for QR Code 2005.
 //

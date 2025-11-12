@@ -1,4 +1,9 @@
 *.sw*
 *.png
 *.directory
-qrcode/qrcode
+qrcode.test
+cpu.out
+mem.out
+old.txt
+new.txt
+cmd/qrcode/qrcode

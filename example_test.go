@@ -1,5 +1,6 @@
 // go-qrcode
 // Copyright 2014 Tom Harwood
+// Copyright 2025 Kyle Xiao (xiaost7@gmail.com)
 /*
 	Amendments Thu, 2017-December-14:
 	- test integration (go test -v)
